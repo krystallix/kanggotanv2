@@ -21,10 +21,6 @@
 </div>
 @endsection
 @section('single-page-js')
-<script>
-    $(document).on("click", "#signin-btn", function(e){
-        e.preventDefault();
-        $("#signin-modal").modal("show")
-    })
-</script>
+<script src="{{asset('js/login.js')}}"></script>
+
 @endsection

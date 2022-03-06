@@ -547,7 +547,7 @@ h5.subtitle {
 
 
 .banner-2 {
-  background: url("/images/slider-3.jpg");
+  background-color: #3330a3;
   background-size: cover;
   position: relative;
 }
@@ -769,7 +769,7 @@ input[type=text], input[type=email] {
 #footer {
   padding-bottom: 60px;
   position: relative;
-  background: url("../images/bg/2.png");
+  /* background: url("../images/bg/2.png"); */
   border-top: 1px solid #eee;
 }
 

@@ -42,6 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link smoth-scroll fw-bold" href="#" id="signin-btn">Sign In</a>
+                    <a class="nav-link smoth-scroll fw-bold signout-btn hidden" href="#" id="signout-btn">Sign Out</a>
                 </li>
             </ul>
         </div>

@@ -8,13 +8,81 @@ body {
   position: relative;
 }
 
-.btn-submit{
-    background-color: #3430a4;
+/* prevent modal padding when open */
+.modal-open {
+  overflow: auto;
+  padding-right: 0 !important;
 }
 
-.has-arrow:after{
-    font-family: "Font Awesome 5 Free"; 
-    font-weight: 600; 
-    float: right;
-    content: "\f078";
+.btn-submit {
+  background-color: #3430a4;
+}
+
+.btn-submit:focus {
+  background-color: #2b288a;
+}
+
+.has-arrow:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  float: right;
+  content: "\f078";
+}
+
+/* loading spin  */
+
+.loading-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,.8);
+  z-index: 999999;
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.hidden{
+  display: none;
+}
+
+.half-circle-spinner, .half-circle-spinner * {
+  box-sizing: border-box;
+}
+
+.half-circle-spinner {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  position: relative;
+}
+
+.half-circle-spinner .circle {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: calc(60px / 10) solid transparent;
+}
+
+.half-circle-spinner .circle.circle-1 {
+  border-top-color: #ff1d5e;
+  animation: half-circle-spinner-animation 1s infinite;
+}
+
+.half-circle-spinner .circle.circle-2 {
+  border-bottom-color: #ff1d5e;
+  animation: half-circle-spinner-animation 1s infinite alternate;
+}
+
+@keyframes half-circle-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+    
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }

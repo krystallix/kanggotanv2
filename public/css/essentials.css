@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,600,700|Rubik:400,600,700");
+body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  font-family: "Rubik", sans-serif;
+  color: #788487;
+  position: relative;
+}
+
+.btn-submit{
+    background-color: #3430a4;
+}
+
+.has-arrow:after{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 600; 
+    float: right;
+    content: "\f078";
+}

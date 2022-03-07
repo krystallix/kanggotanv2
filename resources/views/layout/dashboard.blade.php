@@ -50,7 +50,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div>
-                        <span class="h4 text-dark fw-bold">Hapus Pengirim</span>
+                        <span class="h4 text-dark fw-bold">Hapus Arwah</span>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -82,10 +82,97 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="delete-arwah-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <span class="h4 text-dark fw-bold">Hapus Pengirim</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span>
+                            Apakah anda yakin ingin menghapus pengirim
+                        </span>
+                        <span id="detail-arwah-name" class="fw-bold">
+                            ...
+                        </span>
+                        <span>
+                            dengan alamat 
+                        </span>
+                        <span id="detail-arwah-address" class="fw-bold">
+                            ...
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-md btn-submit mx-2 close text-white" data-bs-dismiss="modal" aria-label="close">
+                            Batal
+                        </button>
+                        <button class="btn btn-md btn-danger mx-2" data-id="" id="delete-arwah-btn">
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="add-arwah-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <span class="h4 text-dark fw-bold">Tambah Arwah</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span id="detail-add-arwah">
+                            Nama Pengirim : ...  Alamat : ....
+                        </span>
+                    </div>
+                    <div>
+                        <div class="pt-2">
+                            <label for="arwahs_name">Nama Arwah</label>
+                        </div>
+                        <div class="d-flex mb-0 pb-2">
+                            <div class="form-group ">
+                                <select class="form-select form-select-lg me-5" name="arwah_type[]" required>
+                                    <option value="Bapak">Bp.</option>
+                                    <option value="Ibu">Ibu.</option>
+                                    <option value="Saudara">Sdr.</option>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control form-control-lg ms-2" name="arwah_name[]" placeholder="Nama Arwah" required>
+                        </div>
+                        <div class="form-group mb-0 py-2">
+                            <label for="arwah_address">Alamat Makam</label>
+                            <input type="text" class="form-control form-control-lg py-2" name="arwah_address[]" placeholder="Alamat Makam" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end py-2" id="add-remove-row-modal">
+                        <button class="btn btn-md btn-danger mx-2 text-white rounded" type="button" id="remove-row-btn"><i class="fa-solid fa-minus fw-bold"></i></button>    
+                        <button class="btn btn-md btn-submit mx-2 text-white rounded" type="button" id="add-row-btn"><i class="fa-solid fa-plus fw-bold"></i></button>    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-md btn-submit mx-2 close text-white" data-bs-dismiss="modal" aria-label="close">
+                            Batal
+                        </button>
+                        <button class="btn btn-md btn-danger mx-2" data-id="" id="add-arwah-btn">
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="wrapper">
     @include('public.dashboard.sidebar')
-    
     <div class="main">
         @include('public.dashboard.header')
         <div class="bg-dashboard"></div>

@@ -29,6 +29,14 @@ body {
   content: "\f078";
 }
 
+/* odd even */
+
+.odd{
+  background-color: transparent;
+}
+.even{
+  background-color: #b9b9b929;
+}
 /* loading spin  */
 
 .loading-overlay{

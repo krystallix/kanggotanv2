@@ -21,6 +21,13 @@ $(document).ready(function(){
     }
 })
 
+// title case capital 
+function toTitleCase(str) {
+	return str.replace(/\w\S*/g, function(txt) {
+		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	});
+}
+
 //pagination
 function getPageList(totalPages, page, maxLength) {
 	if (maxLength < 5) throw "maxLength must be at least 5";

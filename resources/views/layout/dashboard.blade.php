@@ -36,28 +36,65 @@
                 <div class="half-circle-spinner mx-auto">
                     <div class="circle circle-1"></div>
                     <div class="circle circle-2"></div>
-                  </div>
-                  <div class="py-2">
-                      <span class="text-white fw-bold">
+                </div>
+                <div class="py-2">
+                    <span class="text-white fw-bold">
                         Please wait y ges y
                     </span>
-                    </div>
+                </div>
             </div>
-         
         </div>
     </div>
-    <div class="wrapper">
-        @include('public.dashboard.sidebar')
-        
-        <div class="main">
-            @include('public.dashboard.header')
-            <div class="bg-dashboard"></div>
-            <div class="container-fluid mt-negative w-100">
-                @yield('content')
+    <div class="modal fade" id="delete-sender-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <span class="h4 text-dark fw-bold">Hapus Pengirim</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span>
+                            Apakah anda yakin ingin menghapus pengirim
+                        </span>
+                        <span id="detail-sender-name" class="fw-bold">
+                            ...
+                        </span>
+                        <span>
+                            dengan alamat 
+                        </span>
+                        <span id="detail-sender-address" class="fw-bold">
+                            ...
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-md btn-submit mx-2 close text-white" data-bs-dismiss="modal" aria-label="close">
+                            Batal
+                        </button>
+                        <button class="btn btn-md btn-danger mx-2" data-id="" id="delete-sender-btn">
+                            Hapus
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        @include('public.dashboard.scriptjs')
-        @yield('single-page-js')
-    </body>
+    </div>
+</div>
+<div class="wrapper">
+    @include('public.dashboard.sidebar')
     
-    </html>
+    <div class="main">
+        @include('public.dashboard.header')
+        <div class="bg-dashboard"></div>
+        <div class="container-fluid mt-negative w-100">
+            @yield('content')
+        </div>
+    </div>
+    @include('public.dashboard.scriptjs')
+    @yield('single-page-js')
+</body>
+
+</html>

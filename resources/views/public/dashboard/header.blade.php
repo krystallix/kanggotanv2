@@ -11,7 +11,7 @@
                 </a>
                 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                    <img src="images/avatar.png" class="avatar img-fluid rounded me-1" style="object-fit: cover" /> <span class="text-dark" id="username-text">User</span>
+                    <img src="/images/avatar.png" class="avatar img-fluid rounded me-1" style="object-fit: cover" /> <span class="text-dark" id="username-text">User</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>

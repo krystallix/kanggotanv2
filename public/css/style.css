@@ -736,28 +736,28 @@ input[type=text], input[type=email] {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #888;
+  color: rgb(180, 180, 180);
   opacity: .9;
   font-size: 13px;
   padding-left: 10px;
 }
 
 .form-control::-moz-placeholder {
-  color: #888;
+  color: rgb(180, 180, 180);
   opacity: .9;
   font-size: 13px;
   padding-left: 10px;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #888;
+  color: rgb(180, 180, 180);
   opacity: .9;
   font-size: 13px;
   padding-left: 10px;
 }
 
 .form-control:-moz-placeholder {
-  color: #888;
+  color: rgb(180, 180, 180);
   opacity: .9;
   font-size: 13px;
   padding-left: 10px;

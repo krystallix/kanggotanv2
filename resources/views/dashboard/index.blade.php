@@ -1,6 +1,5 @@
 @extends('layout.dashboard')
 
 @section('content')
-oi
-    
+    <span class="h3 text-white fw-bold">Dashboard</span>
 @endsection

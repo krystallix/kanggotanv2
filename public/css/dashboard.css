@@ -1901,21 +1901,39 @@ progress {
     color: #495057;
     outline: 0;
 }
-.form-control::-webkit-date-and-time-value {
-    height: 1.5em;
-}
 .form-control::-webkit-input-placeholder {
-    color: #6c757d;
-    opacity: 1;
-}
-.form-control::-moz-placeholder {
-    color: #6c757d;
-    opacity: 1;
-}
-.form-control::placeholder {
-    color: #6c757d;
-    opacity: 1;
-}
+    color: rgb(180, 180, 180);
+    opacity: .9;
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  
+  .form-control::-moz-placeholder {
+    color: rgb(180, 180, 180);
+    opacity: .9;
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  
+  .form-control:-ms-input-placeholder {
+    color: rgb(180, 180, 180);
+    opacity: .9;
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  
+  .form-control:-moz-placeholder {
+    color: rgb(180, 180, 180);
+    opacity: .9;
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  .form-control::placeholder {
+    color: rgb(180, 180, 180);
+    opacity: .9;
+    font-size: 13px;
+    padding-left: 10px;
+  }
 .form-control:disabled,
 .form-control[readonly] {
     background-color: #e9ecef;
@@ -11067,6 +11085,10 @@ a.sidebar-link {
     text-decoration: none;
     transition: background 0.1s ease-in-out;
 }
+.children-sidebar{
+    padding-left: 3.4rem !important;
+}
+
 .sidebar-link i,
 .sidebar-link svg,
 a.sidebar-link i,

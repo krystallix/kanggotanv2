@@ -19,6 +19,11 @@ Route::get('/', function () {
 
 Route::group(['namespace' => '\App\Http\Controllers'], function () {
     Route::group(['prefix' => 'dashboard'], function () {
-    Route::get('/', 'DashboardController@index');
+        Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::group(['prefix' => 'haul-massal'], function () {
+            Route::get('/store', 'DashboardController@HaulMassalStore')->name('haul-massal.input');
+            Route::get('/show', 'DashboardController@HaulMassalShow')->name('haul-massal.show');
+        });
     });
+    Route::post('/ajax', 'DashboardController@ajaxRequest');
 });

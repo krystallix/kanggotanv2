@@ -88,7 +88,6 @@ $.ajax({
     }
     
     function show_table_haul(data, page, limit){
-        console.log(data)
         table_haul_html = ""
         if (page == 1) {
             nomer = 0;
@@ -114,18 +113,18 @@ $.ajax({
                 }
                 option_html = "<span data-bs-toggle='dropdown' data-bs-auto-close='true' aria-expanded='false' class='px-1 py-1'><i  class='fa-solid fa-ellipsis-vertical'></i></span>"
                 option_html += "<ul class='dropdown-menu'><li><a class='dropdown-item edit-sender' data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Pengirim</a></li>"
-                option_html += "<li><a class='dropdown-item edit-arwah' data-arwah='"+val.id+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Arwah</a></li>"
+                option_html += "<li><a class='dropdown-item edit-arwah' detail-sender='"+v.name+"' data-arwah='"+val.id+"'  detail-arwah='"+val.arwah_type+"-"+val.arwah_name+"-"+val.arwah_address+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Arwah</a></li>"
                 option_html += "<li><a class='dropdown-item add-arwah' detail-sender='"+v.name+"-"+v.address+"'  data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-plus'></i>Tambah Arwah</a></li>"
                 option_html += "<li><a class='dropdown-item delete-sender text-danger' detail-sender='"+v.name+"-"+v.address+"'  data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-trash-can'></i>Hapus Pengirim</a></li>"
                 option_html += "<li><a class='dropdown-item delete-arwah text-danger' detail-arwah='"+arwah_type+" "+val.arwah_name+"-"+val.arwah_address+"' data-arwah='"+val.id+"' href='#'><i class='align-middle me-1 fa-solid fa-trash-can'></i>Hapus Arwah</a></li>"
                 option_html += "</ul>"
                 
                 edit_delete_icon = "<span data-bs-toggle='dropdown' data-bs-auto-close='true' aria-expanded='false' class='px-1 py-1'><i  class='fa-solid fa-ellipsis-vertical'></i></span>"
-                edit_delete_icon += "<ul class='dropdown-menu'><li><a class='dropdown-item edit-arwah' data-arwah='"+val.id+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Arwah</a></li>"
+                edit_delete_icon += "<ul class='dropdown-menu'><li><a class='dropdown-item edit-arwah' detail-sender='"+v.name+"'  detail-arwah='"+val.arwah_type+"-"+val.arwah_name+"-"+val.arwah_address+"' data-arwah='"+val.id+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Arwah</a></li>"
                 edit_delete_icon += "<li><a class='dropdown-item delete-arwah text-danger' detail-arwah='"+arwah_type+" "+val.arwah_name+"-"+val.arwah_address+"' data-arwah='"+val.id+"' href='#'><i class='align-middle me-1 fa-solid fa-trash-can'></i>Hapus Arwah</a></li>"
                 edit_delete_icon += "</ul>"
                 
-         
+                
                 if(key == 0){
                     table_haul_html += "<td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td>"+option_html+"</td></tr>"
                 }else{
@@ -200,7 +199,7 @@ $.ajax({
             }
         });
     })
-
+    
     $(document).on("click", ".delete-arwah", function(e){
         e.preventDefault();
         id_arwah = $(this).attr('data-arwah')
@@ -211,7 +210,7 @@ $.ajax({
         $("#detail-arwah-address").text(toTitleCase(detail_arwah[1]) + '?')
         $("#delete-arwah-modal").modal('show')
     })
-
+    
     $(document).on("click", "#delete-arwah-btn", function(){
         auth = Cookies.get('auth')
         id_arwah = $(this).attr('data-id')
@@ -265,8 +264,222 @@ $.ajax({
             }
         });
     })
-
+    
     $(document).on("click", ".add-arwah", function(e){
         e.preventDefault()
+        id_sender = $(this).attr("data-sender")
+        detail_sender = $(this).attr('detail-sender')
+        detail_sender = detail_sender.split('-')
+        $("#form-add-arwah").attr('data-id', id_sender)
+        $("#detail-add-arwah").html("<span>Nama : "+detail_sender[0]+ "</span><br><span> Alamat : " + detail_sender[1]+"</span>")
         $("#add-arwah-modal").modal('show')
     })
+    
+    i = 1
+    $(document).on("click", "#add-row-btn-modal", function(){
+        i++
+        div_arwah = $(".div-arwah-modal").html()
+        div_arwah_html = "<div class='div-arwah-modal' id='div-arwah-modal-"+i+"'>"+div_arwah+"</div>"
+        total_row = $("#total-row-modal").val()
+        for(k=0; k<total_row; k++){
+            $("#add-remove-row-modal").before(div_arwah_html)    
+        }
+    })
+    
+    $(document).on("click", "#remove-row-btn-modal", function(){
+        div_arwah_length = $('div.div-arwah-modal').length 
+        if(div_arwah_length > 1){
+            $("div.div-arwah-modal:last").remove() 
+        }else{
+            Snackbar.show({
+                text: 'Minimal ada 1 baris ges.',
+                // backgroundColor: '#fff',
+                textColor: '#ff69b4',
+                pos: 'top-right',
+                duration: '2000',
+                showAction: false,
+            });
+        }
+    })
+    
+    $("#form-add-arwah").submit(function(e){
+        e.preventDefault()
+        id_sender = $(this).attr('data-id')
+        data = $(this).serializeArray();
+        data = JSON.stringify(data)
+        auth = Cookies.get("auth");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });    
+        $.ajax({
+            method: 'POST',
+            url: '/ajax/add',
+            data: 'token='+auth+'&data=' + data+'&id_sender='+id_sender,
+            beforeSend: function() {
+                $('#loading').removeClass('hidden')
+            },
+            success: function (msg) {
+                $('#loading').addClass('hidden')
+                msg = JSON.parse(msg)
+                console.log(JSON.stringify(msg))
+                if(msg.code==200){
+                    Snackbar.show({
+                        text: 'Submit Data Success',
+                        // backgroundColor: '#fff',
+                        textColor: '#24D1BC',
+                        pos: 'top-right',
+                        duration: '2000',
+                        showAction: false,
+                    });
+                    redirect('/dashboard/haul-massal/show')
+                }
+                else if(msg.code==500){
+                    Snackbar.show({
+                        text: 'Submit Data Failed',
+                        // backgroundColor: '#fff',
+                        textColor: '#f35b50',
+                        pos: 'top-right',
+                        duration: '2000',
+                        showAction: false,
+                    });
+                }
+            },
+            error: function (msg, textStatus) {
+                $('#loading').addClass('hidden')
+                msg = JSON.parse(msg)
+                if(msg.code==500){
+                    Snackbar.show({
+                        text: 'Submit Data Failed',
+                        // backgroundColor: '#fff',
+                        textColor: '#f35b50',
+                        pos: 'top-right',
+                        duration: '2000',
+                        showAction: false,
+                    });
+                }
+            }
+        });
+    })
+    
+    $(document).on("click", ".edit-arwah", function(e){
+        e.preventDefault()
+        id_arwah = $(this).attr('data-arwah')
+        detail_arwah = $(this).attr('detail-arwah')
+        detail_sender = $(this).attr('detail-sender')
+        detail_arwah = detail_arwah.split("-")
+        $(".select-arwahtype option[value='"+detail_arwah[0]+"']").attr('selected','selected');
+        $("#arwahs_name").val(detail_arwah[1])
+        $("#arwah_address").val(detail_arwah[2])
+        $("#edit-detail").text(detail_sender)
+        $("#form-edit-arwah").attr("data-id", id_arwah)
+        $("#edit-arwah-modal").modal("show")
+    })
+    
+    $("#form-edit-arwah").submit(function(e){
+        e.preventDefault()
+        arwah_name_val = $("#arwahs_name").val()
+        arwah_address_val = $("#arwah_address").val()
+        arwah_type_val = $(".select-arwahtype option:selected").val()
+        data = new Object
+        data.arwah_name = arwah_name_val
+        data.arwah_address = arwah_address_val
+        data.arwah_type = arwah_type_val
+        data = JSON.stringify(data)
+        console.log(data)
+        id_arwah = $(this).attr("data-id")
+        auth = Cookies.get('auth')
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });    
+        $.ajax({
+            method: 'PUT',
+            url: api_server + "/api/nyadran/arwah/"+id_arwah+"/edit",
+            timeout: 0,
+            headers: {
+                "Accept": "application/json"
+            },
+            type: "POST",
+            data: data,
+            contentType: "application/json",
+            dataType: "json",
+            beforeSend: function() {
+                $('#loading').removeClass('hidden')
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + auth);
+            },
+            success: function (msg) {
+                console.log(data)
+                console.log(msg)
+                $('#loading').addClass('hidden')
+                Snackbar.show({
+                    text: 'Submit Data Success',
+                    // backgroundColor: '#fff',
+                    textColor: '#24D1BC',
+                    pos: 'top-right',
+                    duration: '2000',
+                    showAction: false,
+                });
+                redirect('/dashboard/haul-massal/show')
+            },
+            error: function (msg, textStatus) {
+                $('#loading').addClass('hidden')
+                if(msg.code==500){
+                    Snackbar.show({
+                        text: 'Submit Data Failed',
+                        // backgroundColor: '#fff',
+                        textColor: '#f35b50',
+                        pos: 'top-right',
+                        duration: '2000',
+                        showAction: false,
+                    });
+                }
+            }
+        });
+    })
+    
+    $("#search-data-btn").on("click", function() {
+        var value = $("#search-data").val().toLowerCase();
+        if (value != "") {
+            var form = new FormData();
+            form.append("name", value);
+            $.ajax({
+                method: 'POST',
+                url: api_server + "/api/nyadran/search",
+                timeout: 0,
+                headers: {
+                    "Accept": "application/json"
+                },
+                type: "POST",
+                data: form,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                beforeSend: function() {
+                    $('#loading').removeClass('hidden')
+                },
+                success: function (response) {
+                    $('#loading').addClass('hidden')
+                    console.log(response.data)
+                    if (response.data != "") {
+                        $("#no-data").html(" ");
+                        $(".pagination").hide()
+                        show_table_haul(response.data, 1);
+                    } else {
+                        $(".pagination").hide()
+                        not_found = "<div class='d-flex mt-2 justify-content-center h5'>Maaf, data dengan nama " + value + " tidak ditemukan</div>"
+                        $("#data-haul").html(" ");
+                        $("#no-data").html(not_found);
+                    }
+                }
+            });
+        } else {
+            $("#no-data").html(" ");
+            $(".pagination").show()
+            GetData(1)
+        }
+    });

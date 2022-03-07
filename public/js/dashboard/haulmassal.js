@@ -3,7 +3,10 @@ $(document).on("click", "#add-row-btn", function(){
     i++
     div_arwah = $(".div-arwah").html()
     div_arwah_html = "<div class='div-arwah' id='div-arwah-"+i+"'>"+div_arwah+"</div>"
-    $("#add-remove-row").before(div_arwah_html)    
+    total_row = $("#total-row").val()
+    for(k=0; k<total_row; k++){
+        $("#add-remove-row").before(div_arwah_html)    
+    }
 })
 
 $(document).on("click", "#remove-row-btn", function(){

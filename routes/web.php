@@ -26,4 +26,6 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         });
     });
     Route::post('/ajax', 'DashboardController@ajaxRequest');
+    Route::post('/ajax/add', 'DashboardController@ajaxRequestAdd');
+
 });

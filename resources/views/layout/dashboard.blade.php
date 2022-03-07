@@ -121,53 +121,104 @@
     </div>
     <div class="modal fade" id="add-arwah-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div>
-                        <span class="h4 text-dark fw-bold">Tambah Arwah</span>
+            <form id="form-add-arwah" data-id="" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <span class="h4 text-dark fw-bold">Tambah Arwah</span>
+                        </div>
+                    </div> 
+                    
+                    <div class="modal-body">
+                        <div>
+                            <span id="detail-add-arwah">
+                                Nama Pengirim : ...  Alamat : ....
+                            </span>
+                        </div>
+                        
+                        <div class='div-arwah-modal' id='div-arwah-modal-'>
+                            <div class="pt-2">
+                                <label for="arwahs_name">Nama Arwah</label>
+                            </div>
+                            <div class="d-flex mb-0 pb-2">
+                                <div class="form-group ">
+                                    <select class="form-select form-select-lg me-5" name="arwah_type[]" required>
+                                        <option value="Bapak">Bp.</option>
+                                        <option value="Ibu">Ibu.</option>
+                                        <option value="Saudara">Sdr.</option>
+                                    </select>
+                                </div>
+                                <input type="text" class="form-control form-control-lg ms-2" name="arwah_name[]" placeholder="Nama Arwah" required>
+                            </div>
+                            <div class="form-group mb-0 py-2">
+                                <label for="arwah_address">Alamat Makam</label>
+                                <input type="text" class="form-control form-control-lg py-2" name="arwah_address[]" placeholder="Alamat Makam" required>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end py-2" id="add-remove-row-modal">
+                            <button class="btn btn-md btn-danger mx-2 text-white rounded" type="button" id="remove-row-btn-modal"><i class="fa-solid fa-minus fw-bold"></i></button> 
+                            <input type="number" class="form-control w-15" value='1' id="total-row-modal">   
+                            <button class="btn btn-md btn-submit mx-2 text-white rounded" type="button" id="add-row-btn-modal"><i class="fa-solid fa-plus fw-bold"></i></button>    
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-md btn-submit mx-2 close text-white" type="button" data-bs-dismiss="modal" aria-label="close">
+                                Batal
+                            </button>
+                            <button class="btn btn-md btn-submit text-white mx-2" data-id="" type="submit" id="add-arwah-btn">
+                                Tambah
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="modal-body">
-                    <div>
-                        <span id="detail-add-arwah">
-                            Nama Pengirim : ...  Alamat : ....
-                        </span>
-                    </div>
-                    <div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" id="edit-arwah-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <form id="form-edit-arwah" data-id="" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <span class="h4 text-dark fw-bold">Edit Arwah</span>
+                        </div>
+                    </div>  
+                    <div class="modal-body">
+                        <div>
+
+                            <span>Edit arwah dari pengirim <span id="edit-detail" class="fw-bold">...</span></span>
+                        </div>
                         <div class="pt-2">
                             <label for="arwahs_name">Nama Arwah</label>
                         </div>
                         <div class="d-flex mb-0 pb-2">
                             <div class="form-group ">
-                                <select class="form-select form-select-lg me-5" name="arwah_type[]" required>
+                                <select class="form-select form-select-lg select-arwahtype me-5" name="arwah_type"  id='arwah_type' required>
                                     <option value="Bapak">Bp.</option>
                                     <option value="Ibu">Ibu.</option>
                                     <option value="Saudara">Sdr.</option>
                                 </select>
                             </div>
-                            <input type="text" class="form-control form-control-lg ms-2" name="arwah_name[]" placeholder="Nama Arwah" required>
+                            <input type="text" class="form-control form-control-lg ms-2" name="arwah_name" id='arwahs_name' placeholder="Nama Arwah" required>
                         </div>
                         <div class="form-group mb-0 py-2">
                             <label for="arwah_address">Alamat Makam</label>
-                            <input type="text" class="form-control form-control-lg py-2" name="arwah_address[]" placeholder="Alamat Makam" required>
+                            <input type="text" class="form-control form-control-lg py-2" name="arwah_address"  id='arwah_address' placeholder="Alamat Makam" required>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end py-2" id="add-remove-row-modal">
-                        <button class="btn btn-md btn-danger mx-2 text-white rounded" type="button" id="remove-row-btn"><i class="fa-solid fa-minus fw-bold"></i></button>    
-                        <button class="btn btn-md btn-submit mx-2 text-white rounded" type="button" id="add-row-btn"><i class="fa-solid fa-plus fw-bold"></i></button>    
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-md btn-submit mx-2 close text-white" type="button" data-bs-dismiss="modal" aria-label="close">
+                                Batal
+                            </button>
+                            <button class="btn btn-md btn-submit text-white mx-2" data-id="" type="submit" id="edit-arwah-btn">
+                                Edit
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-md btn-submit mx-2 close text-white" data-bs-dismiss="modal" aria-label="close">
-                            Batal
-                        </button>
-                        <button class="btn btn-md btn-danger mx-2" data-id="" id="add-arwah-btn">
-                            Hapus
-                        </button>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

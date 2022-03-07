@@ -42,7 +42,8 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end py-2" id="add-remove-row">
-                            <button class="btn btn-md btn-danger mx-2 text-white rounded" type="button" id="remove-row-btn"><i class="fa-solid fa-minus fw-bold"></i></button>    
+                            <button class="btn btn-md btn-danger mx-2 text-white rounded" type="button" id="remove-row-btn"><i class="fa-solid fa-minus fw-bold"></i></button> 
+                            <input type="number" class="form-control w-15" value='1' id="total-row">   
                             <button class="btn btn-md btn-submit mx-2 text-white rounded" type="button" id="add-row-btn"><i class="fa-solid fa-plus fw-bold"></i></button>    
                         </div>
                         <div class="d-flex py-2">

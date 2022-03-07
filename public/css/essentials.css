@@ -84,6 +84,9 @@ body {
   border-bottom-color: #ff1d5e;
   animation: half-circle-spinner-animation 1s infinite alternate;
 }
+.w-15{
+  width: 15% !important;
+}
 
 @keyframes half-circle-spinner-animation {
   0% {

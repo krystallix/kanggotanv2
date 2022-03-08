@@ -1,1 +1,1 @@
-api_server = "http://api.kanggotan.id"
+api_server = "https://api.kanggotan.id"

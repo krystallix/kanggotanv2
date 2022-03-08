@@ -13,7 +13,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ">
-                <li class="nav-item">
+                <li class="nav-item {{set_active('home')}}">
                     <a class="nav-link smoth-scroll" href="{{route('home')}}">Home</a>
                 </li>
                 <li class="nav-item">
@@ -23,7 +23,7 @@
                             Haul Massal
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarWelcome">
-                            <a class="dropdown-item " href="#">
+                            <a class="dropdown-item {{set_active('haul-massal.2022')}}" href="{{route('haul-massal.2022')}}"">
                                 Haul Massal 2022
                             </a>
                             <a class="dropdown-item " href="#">

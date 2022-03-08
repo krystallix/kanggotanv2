@@ -9,7 +9,8 @@
 
     <title>Kanggotan</title>
     
-    @include('public.linkcss')    
+    @include('public.linkcss')
+    @yield('single-page-css')    
     <link rel="stylesheet" href="{{asset('css/essentials.css')}}">
 </head>
 

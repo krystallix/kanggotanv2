@@ -27,5 +27,5 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
     });
     Route::post('/ajax', 'DashboardController@ajaxRequest');
     Route::post('/ajax/add', 'DashboardController@ajaxRequestAdd');
-
+    Route::get('/haul-massal/2022/', 'Controller@haul2022')->name('haul-massal.2022');
 });

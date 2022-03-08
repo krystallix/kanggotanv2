@@ -12,6 +12,12 @@
     @include('public.linkcss')
     @yield('single-page-css')    
     <link rel="stylesheet" href="{{asset('css/essentials.css')}}">
+    <style>
+        .active .nav-link{
+            color: #d1d0d0 !important;
+            font-weight: 700;
+        }
+    </style>
 </head>
 
 

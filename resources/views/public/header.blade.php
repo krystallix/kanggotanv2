@@ -17,13 +17,13 @@
                     <a class="nav-link smoth-scroll" href="{{route('home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown {{set_active('haul-massal.2022')}}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarWelcome" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Haul Massal
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarWelcome">
-                            <a class="dropdown-item {{set_active('haul-massal.2022')}}" href="{{route('haul-massal.2022')}}"">
+                            <a class="dropdown-item " href="{{route('haul-massal.2022')}}"">
                                 Haul Massal 2022
                             </a>
                             <a class="dropdown-item " href="#">

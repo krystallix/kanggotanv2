@@ -483,3 +483,20 @@ $.ajax({
             GetData(1)
         }
     });
+
+    $.ajax({
+        url: api_server+"/api/nyadran/statistik",
+        method: "get",
+        timeout: 0,
+        success: function(response){
+            $("#total-sender").text("Total Pengirim : "+response.data.total_sender + " Orang.")
+            $("#total-arwah").text("Total Arwah : "+response.data.total_arwah + " Orang")
+        }
+    })
+
+    $(document).on("click", "#download-data-haul", function(e){
+        e.preventDefault
+        downloadUrl= api_server+"/api/nyadran/export"
+        file_name = "Haul-Massal-2022"
+        ExportFile(downloadUrl, file_name)
+    })

@@ -53,3 +53,17 @@ function getPageList(totalPages, page, maxLength) {
 	// Breaks on both sides
 	return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
 }
+
+function ExportFile(urlToSend, fileName) {
+	var req = new XMLHttpRequest();
+	req.open("GET", urlToSend, true);
+	req.responseType = "blob";
+	req.onload = function(event) {
+		var blob = req.response;
+		var link = document.createElement('a');
+		link.href = window.URL.createObjectURL(blob);
+		link.download = fileName;
+		link.click();
+	};
+	req.send();
+}

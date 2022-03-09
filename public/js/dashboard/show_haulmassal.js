@@ -110,6 +110,8 @@ $.ajax({
                     arwah_type = "Ibu. "
                 }else if(val.arwah_type == "Saudara"){
                     arwah_type = "Sdr. "
+                }else if(val.arwah_type == "Adik"){
+                    arwah_type = "Adik. "
                 }
                 option_html = "<span data-bs-toggle='dropdown' data-bs-auto-close='true' aria-expanded='false' class='px-1 py-1'><i  class='fa-solid fa-ellipsis-vertical'></i></span>"
                 option_html += "<ul class='dropdown-menu'><li><a class='dropdown-item edit-sender' data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Pengirim</a></li>"
@@ -483,7 +485,7 @@ $.ajax({
             GetData(1)
         }
     });
-
+    
     $.ajax({
         url: api_server+"/api/nyadran/statistik",
         method: "get",
@@ -493,7 +495,7 @@ $.ajax({
             $("#total-arwah").text("Total Arwah : "+response.data.total_arwah + " Orang")
         }
     })
-
+    
     $(document).on("click", "#download-data-haul", function(e){
         e.preventDefault
         downloadUrl= api_server+"/api/nyadran/export"

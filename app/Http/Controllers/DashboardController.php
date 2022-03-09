@@ -67,7 +67,7 @@ class DashboardController extends Controller
             $curl = curl_init();
             
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'http://api.kanggotan.id/api/nyadran/store',
+                CURLOPT_URL => 'https://api.kanggotan.id/api/nyadran/store',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -129,7 +129,7 @@ class DashboardController extends Controller
                 $curl = curl_init();
                 
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://api.kanggotan.id/api/nyadran/arwah/'.$id_sender.'/new',
+                    CURLOPT_URL => 'https://api.kanggotan.id/api/nyadran/arwah/'.$id_sender.'/new',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,

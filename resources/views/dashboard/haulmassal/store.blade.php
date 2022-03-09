@@ -32,13 +32,13 @@
                                         <option value="Bapak">Bp.</option>
                                         <option value="Ibu">Ibu.</option>
                                         <option value="Saudara">Sdr.</option>
+                                        <option value="Adik">Adik.</option>
                                     </select>
                                 </div>
                                 <input type="text" class="form-control form-control-lg ms-2" name="arwah_name[]" placeholder="Nama Arwah" required>
+                                <input type="text" class="form-control form-control-lg py-2 ms-2" name="arwah_address[]" placeholder="Alamat Makam" required>
                             </div>
                             <div class="form-group mb-0 py-2">
-                                <label for="arwah_address">Alamat Makam</label>
-                                <input type="text" class="form-control form-control-lg py-2" name="arwah_address[]" placeholder="Alamat Makam" required>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end py-2" id="add-remove-row">

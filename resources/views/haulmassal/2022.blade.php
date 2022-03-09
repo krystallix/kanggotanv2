@@ -177,13 +177,13 @@
                                 <button class="btn btn-submit text-white" type="button" id="search-data-public-btn">Cari</button>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end">
+                        {{-- <div class="d-flex justify-content-end">
                             <div class="download-xls text-dark">
                                 <span>
                                     <a  href="#" id='download-data-haul' class="text-primary btn-download" >  Download Data <i class="fa-solid fa-download"></i></a>
                                 </span>      
                             </div> 
-                        </div>   
+                        </div>    --}}
                     </div>
                 </div>
             </div>
@@ -330,6 +330,8 @@
                         arwah_type = "Ibu. "
                     }else if(val.arwah_type == "Saudara"){
                         arwah_type = "Sdr. "
+                    }else if(val.arwah_type == "Adik"){
+                        arwah_type = "Adik. "
                     }
                     
                     if(key == 0){

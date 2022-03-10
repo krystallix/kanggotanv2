@@ -195,6 +195,7 @@
                                 <td>No</td>
                                 <td>Nama Pengirim</td>
                                 <td>Alamat Pengirim</td>
+                                <td>No</td>
                                 <td>Nama Arwah</td>
                                 <td>Makam Arwah</td>
                                 <td></td>
@@ -333,11 +334,11 @@
                     }else if(val.arwah_type == "Adik"){
                         arwah_type = "Adik. "
                     }
-                    
+                    no = key + 1
                     if(key == 0){
-                        table_haul_html += "<td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td></td></tr>"
+                        table_haul_html += "<td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td></td></tr>"
                     }else{
-                        table_haul_html += "<tr class='"+isOdd+"'><td colspan='3'><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td></td></tr>"
+                        table_haul_html += "<tr class='"+isOdd+"'><td colspan='3'></td><td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td></td></tr>"
                     }
                 })
                 $("#data-haul-public").html(table_haul_html)
@@ -366,7 +367,6 @@
                     },
                     success: function (response) {
                         $('#loading').addClass('hidden')
-                        console.log(response.data)
                         if (response.data != "") {
                             $("#no-data").html(" ");
                             $(".pagination").hide()

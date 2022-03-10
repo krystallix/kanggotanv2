@@ -118,7 +118,11 @@ $.ajax({
                 option_html += "<li><a class='dropdown-item edit-arwah' detail-sender='"+v.name+"' data-arwah='"+val.id+"'  detail-arwah='"+val.arwah_type+"-"+val.arwah_name+"-"+val.arwah_address+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Arwah</a></li>"
                 option_html += "<li><a class='dropdown-item add-arwah' detail-sender='"+v.name+"-"+v.address+"'  data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-plus'></i>Tambah Arwah</a></li>"
                 option_html += "<li><a class='dropdown-item delete-sender text-danger' detail-sender='"+v.name+"-"+v.address+"'  data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-trash-can'></i>Hapus Pengirim</a></li>"
-                option_html += "<li><a class='dropdown-item delete-arwah text-danger' detail-arwah='"+arwah_type+" "+val.arwah_name+"-"+val.arwah_address+"' data-arwah='"+val.id+"' href='#'><i class='align-middle me-1 fa-solid fa-trash-can'></i>Hapus Arwah</a></li>"
+                if(v.arwahs.length == 1){
+                    option_html += ""
+                }else{
+                    option_html += "<li><a class='dropdown-item delete-arwah text-danger' detail-arwah='"+arwah_type+" "+val.arwah_name+"-"+val.arwah_address+"' data-arwah='"+val.id+"' href='#'><i class='align-middle me-1 fa-solid fa-trash-can'></i>Hapus Arwah</a></li>"
+                }
                 option_html += "</ul>"
                 
                 edit_delete_icon = "<span data-bs-toggle='dropdown' data-bs-auto-close='true' aria-expanded='false' class='px-1 py-1'><i  class='fa-solid fa-ellipsis-vertical'></i></span>"
@@ -128,10 +132,12 @@ $.ajax({
                 
                 
                 if(key == 0){
-                    table_haul_html += "<td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td>"+option_html+"</td></tr>"
+                    table_haul_html += "<td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td>"+option_html+"</td></tr>"
                 }else{
-                    table_haul_html += "<tr class='"+isOdd+"'><td colspan='3'><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td>"+edit_delete_icon+"</td></tr>"
+                    table_haul_html += "<tr class='"+isOdd+"'><td colspan='3'></td><td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td>"+edit_delete_icon+"</td></tr>"
                 }
+                
+                
             })
             $("#data-haul").html(table_haul_html)
         })
@@ -325,7 +331,6 @@ $.ajax({
             success: function (msg) {
                 $('#loading').addClass('hidden')
                 msg = JSON.parse(msg)
-                console.log(JSON.stringify(msg))
                 if(msg.code==200){
                     Snackbar.show({
                         text: 'Submit Data Success',
@@ -389,7 +394,6 @@ $.ajax({
         data.arwah_address = arwah_address_val
         data.arwah_type = arwah_type_val
         data = JSON.stringify(data)
-        console.log(data)
         id_arwah = $(this).attr("data-id")
         auth = Cookies.get('auth')
         $.ajaxSetup({
@@ -415,8 +419,6 @@ $.ajax({
                 xhr.setRequestHeader("Authorization", "Bearer " + auth);
             },
             success: function (msg) {
-                console.log(data)
-                console.log(msg)
                 $('#loading').addClass('hidden')
                 Snackbar.show({
                     text: 'Submit Data Success',
@@ -466,7 +468,6 @@ $.ajax({
                 },
                 success: function (response) {
                     $('#loading').addClass('hidden')
-                    console.log(response.data)
                     if (response.data != "") {
                         $("#no-data").html(" ");
                         $(".pagination").hide()

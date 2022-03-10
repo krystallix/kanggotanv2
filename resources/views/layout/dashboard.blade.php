@@ -27,6 +27,7 @@
             margin-top: -10rem !important;
         }
     </style>   
+@yield('single-page-css')
 </head>
 
 <body>

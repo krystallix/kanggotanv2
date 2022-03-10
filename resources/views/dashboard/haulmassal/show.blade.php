@@ -41,6 +41,7 @@
                             <td>No</td>
                             <td>Nama Pengirim</td>
                             <td>Alamat Pengirim</td>
+                            <td>No</td>
                             <td>Nama Arwah</td>
                             <td>Makam Arwah</td>
                             <td></td>
@@ -61,6 +62,6 @@
 </div>
 @endsection
 @section('single-page-js')
-<script src="{{asset('js/dashboard/show_haulmassal.js')}}"></script>
+<script src="{{asset('js/dashboard/haulmassal/show.js')}}"></script>
 
 @endsection

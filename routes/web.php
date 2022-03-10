@@ -23,9 +23,14 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         Route::group(['prefix' => 'haul-massal'], function () {
             Route::get('/store', 'DashboardController@HaulMassalStore')->name('haul-massal.input');
             Route::get('/show', 'DashboardController@HaulMassalShow')->name('haul-massal.show');
+            Route::get('/bulk-store', 'DashboardController@haulMassalBulk')->name('haul-massal.bulk-store');
         });
+        Route::get('/secretary-area', 'DashboardController@SecretaryArea')->name('secretary-area');
+        Route::get('/secretary-area/2', 'DashboardController@SecretaryArea2')->name('secretary-area-2');
+        Route::get('/bendahara-area', 'DashboardController@BendaharaArea')->name('bendahara-area');
     });
     Route::post('/ajax', 'DashboardController@ajaxRequest');
+    Route::post('/ajax/bulk', 'DashboardController@bulkRequest');
     Route::post('/ajax/add', 'DashboardController@ajaxRequestAdd');
     Route::get('/haul-massal/2022/', 'Controller@haul2022')->name('haul-massal.2022');
 });

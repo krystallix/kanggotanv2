@@ -1,3 +1,39 @@
+
+function autocomplete(){
+    address_arr = new Array()
+    name_arr = new Array()
+    $.ajax({
+        url: api_server + "/api/nyadran/address",
+        method: "get",
+        timeout: 0,
+        success: function(response){
+            $.each(response.data, function(k, v){
+                address_arr.push(v.arwah_address)
+            })
+        }
+    })
+    $.ajax({
+        url: api_server + "/api/nyadran/name/arwahs",
+        method: "get",
+        timeout: 0,
+        success: function(response){
+            $.each(response.data, function(k, v){
+                name_arr.push(v.arwah_name)
+            })
+        }
+    })
+    $( "input[name='arwah_address[]']" ).autocomplete({
+        source: address_arr
+    });
+    $("input[name='arwah_name[]']").autocomplete({
+        source: name_arr
+    });
+
+    $("input[name='address']").autocomplete({
+        source: address_arr
+    });
+}
+
 i = 1
 $(document).on("click", "#add-row-btn", function(){
     i++
@@ -7,6 +43,7 @@ $(document).on("click", "#add-row-btn", function(){
     for(k=0; k<total_row; k++){
         $("#add-remove-row").before(div_arwah_html)    
     }
+    autocomplete()
 })
 
 $(document).on("click", "#remove-row-btn", function(){
@@ -29,13 +66,12 @@ $("#form-arwah").submit(function(e){
     e.preventDefault()
     data = $(this).serializeArray();
     data = JSON.stringify(data)
-    console.log(data)
     auth = Cookies.get("auth");
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });    
+    });
     $.ajax({
         method: 'POST',
         url: '/ajax',
@@ -83,4 +119,9 @@ $("#form-arwah").submit(function(e){
             }
         }
     });
+    
+})
+
+$(document).ready(function(){
+    autocomplete()
 })

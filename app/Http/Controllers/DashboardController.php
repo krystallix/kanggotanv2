@@ -34,6 +34,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.temp.bend');
     }
+    public function SuperadminArea()
+    {
+        return view('dashboard.temp.superadmin');
+    }
     public function CreateUser()
     {
         return view('dashboard.users.create');

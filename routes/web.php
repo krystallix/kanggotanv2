@@ -32,6 +32,7 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         Route::get('/secretary-area', 'DashboardController@SecretaryArea')->name('secretary-area');
         Route::get('/secretary-area/2', 'DashboardController@SecretaryArea2')->name('secretary-area-2');
         Route::get('/bendahara-area', 'DashboardController@BendaharaArea')->name('bendahara-area');
+        Route::get('/superadmin-area', 'DashboardController@SuperadminArea')->name('superadmin-area');
     });
     Route::post('/ajax', 'DashboardController@ajaxRequest');
     Route::post('/ajax/bulk', 'DashboardController@bulkRequest');

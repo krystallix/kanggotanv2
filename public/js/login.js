@@ -48,6 +48,8 @@ $("#signin-form").submit(function(e){
             result= JSON.parse(result)
             auth = result.data.token
             username = result.data.user.name
+            roles = result.data.user.roles[0].name
+            Cookies.set("roles", roles, {expires: 1})
             Cookies.set("auth", auth, { expires: 1 });
             Cookies.set("username", username, { expires: 1 });
             redirect('/dashboard')
@@ -65,3 +67,13 @@ $("#signin-form").submit(function(e){
         }
     });
 })
+
+$(".toggle-password").click(function() {
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    input = $(this).parent().find("input");
+    if (input.attr("type") == "password") {
+        input.attr("type", "text");
+    } else {
+        input.attr("type", "password");
+    }
+});

@@ -88,6 +88,7 @@ $.ajax({
     }
     
     function show_table_haul(data, page, limit){
+        console.log(data)
         table_haul_html = ""
         if (page == 1) {
             nomer = 0;
@@ -114,7 +115,7 @@ $.ajax({
                     arwah_type = "Adik. "
                 }
                 option_html = "<span data-bs-toggle='dropdown' data-bs-auto-close='true' aria-expanded='false' class='px-1 py-1'><i  class='fa-solid fa-ellipsis-vertical'></i></span>"
-                option_html += "<ul class='dropdown-menu'><li><a class='dropdown-item edit-sender' data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Pengirim</a></li>"
+                option_html += "<ul class='dropdown-menu'><li><a class='dropdown-item edit-sender' detail-sender='"+v.name+"+"+v.phone+"+"+v.address+"' data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Pengirim</a></li>"
                 option_html += "<li><a class='dropdown-item edit-arwah' detail-sender='"+v.name+"' data-arwah='"+val.id+"'  detail-arwah='"+val.arwah_type+"-"+val.arwah_name+"-"+val.arwah_address+"' href='#'><i class='align-middle me-1 fa-solid fa-pen'></i>Edit Arwah</a></li>"
                 option_html += "<li><a class='dropdown-item add-arwah' detail-sender='"+v.name+"-"+v.address+"'  data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-plus'></i>Tambah Arwah</a></li>"
                 option_html += "<li><a class='dropdown-item delete-sender text-danger' detail-sender='"+v.name+"-"+v.address+"'  data-sender='"+v.id+"' href='#'><i class='align-middle me-1 fa-solid fa-trash-can'></i>Hapus Pengirim</a></li>"
@@ -218,6 +219,7 @@ $.ajax({
         $("#detail-arwah-address").text(toTitleCase(detail_arwah[1]) + '?')
         $("#delete-arwah-modal").modal('show')
     })
+    
     
     $(document).on("click", "#delete-arwah-btn", function(){
         auth = Cookies.get('auth')
@@ -503,3 +505,76 @@ $.ajax({
         file_name = "Haul-Massal-2022"
         ExportFile(downloadUrl, file_name)
     })
+    
+    $(document).on("click", ".edit-sender", function(e){
+        e.preventDefault()
+        id_sender = $(this).attr('data-sender')
+        detail_sender = $(this).attr('detail-sender')
+        detail_sender = detail_sender.split("+")
+        $("#input-sender").val(detail_sender[0])
+        $("#input-phone").val(detail_sender[1])
+        $("#input-address").val(detail_sender[2])
+        console.log(detail_sender)
+        $("#edit-sender-form").attr("data-id", id_sender)
+        $("#edit-sender-modal").modal("show")
+    })
+    
+    $("#edit-sender-form").submit(function(e){
+        e.preventDefault()
+        id_sender = $(this).attr("data-id")
+        data = new Object()
+        data.name = $("#input-sender").val()
+        data.phone = $("#input-phone").val()
+        data.address = $("#input-address").val()
+        data = JSON.stringify(data)
+        console.log(data)
+        auth = Cookies.get('auth')
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });    
+        $.ajax({
+            method: 'PUT',
+            url: api_server + "/api/nyadran/sender/"+id_sender+"/edit",
+            timeout: 0,
+            headers: {
+                "Accept": "application/json"
+            },
+            data: data,
+            contentType: "application/json",
+            beforeSend: function() {
+                $('#loading').removeClass('hidden')
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + auth);
+            },
+            success: function (msg) {
+                console.log(msg)
+                $('#loading').addClass('hidden')
+                Snackbar.show({
+                    text: 'Submit Data Success',
+                    // backgroundColor: '#fff',
+                    textColor: '#24D1BC',
+                    pos: 'top-right',
+                    duration: '2000',
+                    showAction: false,
+                });
+                redirect('/dashboard/haul-massal/show')
+            },
+            error: function (msg, textStatus) {
+                $('#loading').addClass('hidden')
+                if(msg.code==500){
+                    Snackbar.show({
+                        text: 'Submit Data Failed',
+                        // backgroundColor: '#fff',
+                        textColor: '#f35b50',
+                        pos: 'top-right',
+                        duration: '2000',
+                        showAction: false,
+                    });
+                }
+            }
+        });
+    })
+    

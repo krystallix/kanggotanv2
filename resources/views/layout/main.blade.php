@@ -17,6 +17,12 @@
             color: #d1d0d0 !important;
             font-weight: 700;
         }
+        .toggle-password {
+            float: right;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: -31px;
+        }
     </style>
 </head>
 
@@ -28,14 +34,14 @@
                 <div class="half-circle-spinner mx-auto">
                     <div class="circle circle-1"></div>
                     <div class="circle circle-2"></div>
-                  </div>
-                  <div class="py-2">
-                      <span class="text-white fw-bold">
+                </div>
+                <div class="py-2">
+                    <span class="text-white fw-bold">
                         Please wait y ges y
                     </span>
-                    </div>
+                </div>
             </div>
-         
+            
         </div>
     </div>
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -68,6 +74,7 @@
                                 <div class="form-group mb-0 py-2">
                                     <label for="password-form" class="fw-bold">Password</label>
                                     <input type="password" class="form-control form-control-lg" name="password" id="password-form" placeholder="Password">
+                                    <i class="toggle-password fa-solid fa-eye-slash"></i>
                                 </div>
                                 <div class="py-2">
                                     <button type="submit" class="form-control btn btn-submit text-white rounded submit px-3" >Sign In</button>

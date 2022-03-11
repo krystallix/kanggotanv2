@@ -1,4 +1,8 @@
 auth = Cookies.get("auth")
+roles = Cookies.get("roles")
+if(roles != 'Super Admin'){
+    redirect('/dashboard/superadmin-area')
+}
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

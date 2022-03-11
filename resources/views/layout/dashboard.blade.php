@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{asset('images/favicon.ico')}}">
+
     <title>Dashboard</title>
     
     <!-- bootstrap.min css -->
@@ -42,6 +44,37 @@
                     <span class="text-white fw-bold">
                         Please wait y ges y
                     </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="delete-user-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <span class="h4 text-dark fw-bold">Hapus Pengirim</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span>
+                            Apakah anda yakin ingin menghapus User
+                        </span>
+                        <span id="detail-user-name" class="fw-bold text-dark">
+                            ...
+                        </span> ?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-md btn-submit mx-2 close text-white" data-bs-dismiss="modal" aria-label="close">
+                            Batal
+                        </button>
+                        <button class="btn btn-md btn-danger mx-2" data-id="" id="delete-user-btn">
+                            Hapus
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

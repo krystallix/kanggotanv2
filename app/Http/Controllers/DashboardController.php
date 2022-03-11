@@ -34,6 +34,14 @@ class DashboardController extends Controller
     {
         return view('dashboard.temp.bend');
     }
+    public function CreateUser()
+    {
+        return view('dashboard.users.create');
+    }
+    public function ShowUser()
+    {
+        return view('dashboard.users.list');
+    }
     public function ajaxRequest()
     {
         if (isset($_POST['data'], $_POST['token'])) {

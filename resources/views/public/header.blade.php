@@ -1,9 +1,9 @@
 <!--MAIN HEADER AREA START -->
 <nav class="navbar navbar-expand-lg fixed-top trans-navigation">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{route('home')}}">
             {{-- <img src="images/logo.png" alt="" class="img-fluid b-logo"> --}}
-            <span class="h3 fw-bold text-white">belum ada logo</span>
+            <span class="h3 fw-bold text-white">Kanggotan</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@
                             Haul Massal
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarWelcome">
-                            <a class="dropdown-item " href="{{route('haul-massal.2022')}}"">
+                            <a class="dropdown-item " href="{{route('haul-massal.2022')}}">
                                 Haul Massal 2022
                             </a>
                             <a class="dropdown-item " href="#">

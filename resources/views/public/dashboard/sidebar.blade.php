@@ -104,6 +104,27 @@
                     </div>
                 </li>
             </li>
+            <li class="sidebar-header">
+                Akun
+            </li>
+            <li class="sidebar-item ">
+                <li class="sidebar-item {{ set_active(['list-user', 'create-user']) }}">
+                    <a class="sidebar-link has-arrow" href="#!" data-bs-toggle="collapse"
+                        data-bs-target="#users-dropdown" aria-expanded="false" aria-controls="navAuthentication">
+                        <i class="fa-solid fa-user-group align-middle"></i> <span class="align-middle">Users</span>
+                    </a>
+                    <div id="users-dropdown" class="collapse" data-bs-parent="#sideNavbar">
+                        <ul class="nav flex-column">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link children-sidebar" href="{{route('create-user')}}">Buat User</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link children-sidebar" href="{{route('list-user')}}">List User</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </li>
         </ul>
     </div>
 </nav>

@@ -159,23 +159,16 @@
         <div class="card">
             <div class="card-header bg-white">
                 <div class="row">
-                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-6 col-6">
-                        <h4 class="card-title mb-0 text-dark px-2 py-2">List Data</h4>
-                        <div class="stats text-dark px-2 py-2">
-                            <span id="total-sender" class="pe-2">
-                                
-                            </span>
-                            <span id="total-arwah" class="ps-2">
-                                
-                            </span>
-                        </div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-4 col-4">
+                        <h5 class="card-title mb-0 text-dark px-2 py-2">List Data</h5>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 col-8">
                         <div class="search-data">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Cari pengirim" id="search-data-public" aria-describedby="button-addon2">
                                 <button class="btn btn-submit text-white" type="button" id="search-data-public-btn">Cari</button>
                             </div>
+                            
                         </div>
                         {{-- <div class="d-flex justify-content-end">
                             <div class="download-xls text-dark">
@@ -188,6 +181,7 @@
                 </div>
             </div>
             <div class="card-body py-1">
+                <marquee behavior="" direction="" id="total-stats"></marquee>
                 <div id="table-responsives" style="overflow: auto">
                     <table class="table table-hover text-nowrap table-sm table-haul mb-0">
                         <thead class="fw-bold">
@@ -336,9 +330,9 @@
                     }
                     no = key + 1
                     if(key == 0){
-                        table_haul_html += "<td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td></td></tr>"
+                        table_haul_html += "<td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name.replace(/\,/g,'.'))+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td></td></tr>"
                     }else{
-                        table_haul_html += "<tr class='"+isOdd+"'><td colspan='3'></td><td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td></td></tr>"
+                        table_haul_html += "<tr class='"+isOdd+"'><td colspan='3'></td><td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name.replace(/\,/g,'.'))+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td></td></tr>"
                     }
                 })
                 $("#data-haul-public").html(table_haul_html)
@@ -390,8 +384,10 @@
             method: "get",
             timeout: 0,
             success: function(response){
-                $("#total-sender").text("Total Pengirim : "+response.data.total_sender + " Orang.")
-                $("#total-arwah").text("Total Arwah : "+response.data.total_arwah + " Orang")
+                stats_html = ""
+                stats_html += "<span>Total Pengirim: </span><span class='fw-bold text-dark'>"+response.data.total_sender + " Orang.&nbsp;&nbsp;</span>"
+                stats_html += "<span>Total Arwah: </span><span class='fw-bold text-dark'>"+response.data.total_arwah + " Orang.</span>"
+                $("#total-stats").html(stats_html)
             }
         })
         $(document).on("click", "#download-data-haul", function(e){

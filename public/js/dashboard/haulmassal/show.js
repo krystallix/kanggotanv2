@@ -133,9 +133,9 @@ $.ajax({
                 
                 
                 if(key == 0){
-                    table_haul_html += "<td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td>"+option_html+"</td></tr>"
+                    table_haul_html += "<td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address.replace(/\,/g,'.'))+"</td><td>"+option_html+"</td></tr>"
                 }else{
-                    table_haul_html += "<tr class='"+isOdd+"'><td colspan='3'></td><td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name)+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td>"+edit_delete_icon+"</td></tr>"
+                    table_haul_html += "<tr class='"+isOdd+"'><td colspan='3'></td><td>"+no+".</td><td>"+arwah_type+toTitleCase(val.arwah_name.replace(/\,/g,'.'))+"</td><td>"+toTitleCase(val.arwah_address)+"</td><td>"+edit_delete_icon+"</td></tr>"
                 }
                 
                 

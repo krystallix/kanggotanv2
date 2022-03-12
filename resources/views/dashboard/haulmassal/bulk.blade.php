@@ -63,13 +63,13 @@
             var [type, ...rest] = v.split('.')
             var name = rest.join()
             name = $.trim(name)
-            if(type == "Bp"){
+            if(type == "Bp" || type == "Bpk" || type == "bp" || type == "bpk"){
                 type = "Bapak"
-            }else if(type == "Sdr"){
+            }else if(type == "Sdr" || type == "sdr"){
                 type =  "Saudara"
-            }else if(type == "Ibu"){
+            }else if(type == "Ibu" || type == "ibu"){
                 type =  "Ibu"
-            }else if(type == "Adik"){
+            }else if(type == "Adik" || type == "adik" || type == "Adk" || type == "adk"){
                 type =  "Adik"
             }
             arwah_type.push(type)

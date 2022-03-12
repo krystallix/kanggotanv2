@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,7 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         Route::get('/bendahara-area', 'DashboardController@BendaharaArea')->name('bendahara-area');
         Route::get('/superadmin-area', 'DashboardController@SuperadminArea')->name('superadmin-area');
     });
+    Route::get('/print-page', 'DashboardController@PrintPage');
     Route::post('/ajax', 'DashboardController@ajaxRequest');
     Route::post('/ajax/bulk', 'DashboardController@bulkRequest');
     Route::post('/ajax/add', 'DashboardController@ajaxRequestAdd');

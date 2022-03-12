@@ -10,6 +10,9 @@ class DashboardController extends Controller
     {
         return view('dashboard.index');
     }
+    public function PrintPage(){
+        return view('print.index');
+    }
     public function HaulMassalStore()
     {
         return view('dashboard.haulmassal.store');

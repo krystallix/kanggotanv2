@@ -38,7 +38,7 @@
             <div class="col-lg-3 col-sm-6 col-md-6">
                 <div class="footer-widget footer-text">
                     <h4>Our location</h4>
-                    <p class="mail"><span>Mail:</span> rismakanggotan@gmail.com</p>
+                    <p class="mail"><span>Mail:</span> halo@kanggotan.id</p>
                     <p><span>Phone :</span>+62xx-xxxx-xxxx</p>
                     <p><span>Location:</span> Kanggotan Lor, Pleret, Pleret, Bantul, DIY</p>
                 </div>

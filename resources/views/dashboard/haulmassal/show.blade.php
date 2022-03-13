@@ -34,6 +34,7 @@
             </div>
         </div>
         <div class="card-body py-1">
+            <marquee behavior="" direction="" id="total-stats"></marquee>
             <div id="table-responsives" style="overflow: auto">
                 <table class="table table-hover text-nowrap table-sm table-haul mb-0">
                     <thead class="fw-bold">

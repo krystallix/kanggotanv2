@@ -46,7 +46,7 @@
             pageLength = response.data.last_page;
             //page
             // Number of items and limits the number of items per page
-            var limitPerPage = 100;
+            var limitPerPage = 20;
             // Total pages rounded upwards
             var totalPages = pageLength;
             // Number of buttons at the top, not counting prev/next,

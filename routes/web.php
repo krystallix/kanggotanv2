@@ -26,6 +26,7 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
             Route::get('/store', 'DashboardController@HaulMassalStore')->name('haul-massal.input');
             Route::get('/show', 'DashboardController@HaulMassalShow')->name('haul-massal.show');
             Route::get('/bulk-store', 'DashboardController@haulMassalBulk')->name('haul-massal.bulk-store');
+            Route::get('/log', 'DashboardController@HaulMassalLog')->name('haul-massal.log');
         });
         Route::group(['prefix' => 'users'], function () {
             Route::get('/create-user', 'DashboardController@CreateUser')->name('create-user');

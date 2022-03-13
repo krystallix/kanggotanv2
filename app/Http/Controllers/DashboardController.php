@@ -25,6 +25,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.haulmassal.show');
     }
+    public function HaulMassalLog()
+    {
+        return view('dashboard.haulmassal.log');
+    }
     public function SecretaryArea()
     {
         return view('dashboard.temp.secre');

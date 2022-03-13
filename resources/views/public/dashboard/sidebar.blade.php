@@ -20,7 +20,7 @@
                     <i class="fa-solid fa-user align-middle"></i> <span class="align-middle">Profile</span>
                 </a>
             </li> --}}
-            <li class="sidebar-item {{ set_active(['haul-massal.input', 'haul-massal.show', 'haul-massal.bulk-store']) }}">
+            <li class="sidebar-item {{ set_active(['haul-massal.input', 'haul-massal.show', 'haul-massal.log', 'haul-massal.bulk-store']) }}">
                 <a class="sidebar-link has-arrow" href="#!" data-bs-toggle="collapse"
                     data-bs-target="#haulmassal-dropdown" aria-expanded="false" aria-controls="navAuthentication">
                     <i class="fa-solid fa-user-astronaut align-middle"></i> <span class="align-middle">Haul
@@ -34,6 +34,10 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link children-sidebar" href="{{ route('haul-massal.show') }}">List
+                                Data</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link children-sidebar" href="{{ route('haul-massal.log') }}">Log
                                 Data</a>
                         </li>
                     </ul>

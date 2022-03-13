@@ -15,7 +15,7 @@ $.ajax({
         log_html = ""
         $.each(response.data, function(k, v){
             date = new Date(v.created_at);
-            timestamps = date.toUTCString()
+            timestamps = date.toLocaleString()
             if(v.action.toLowerCase() == "create arwah"){
                 text_action = "create"
                 action = "create data"

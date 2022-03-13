@@ -232,6 +232,7 @@
                                     <option value="Bapak">Bp.</option>
                                     <option value="Ibu">Ibu.</option>
                                     <option value="Saudara">Sdr.</option>
+                                    <option value="Adik">Adik.</option>
                                 </select>
                             </div>
                             <input type="text" class="form-control form-control-lg ms-2" name="arwah_name" id='arwahs_name' placeholder="Nama Arwah" required>

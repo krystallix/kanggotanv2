@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 
 @section('content')
-<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
+<div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 mx-auto">
     <div class="card">
         <div class="card-header">
             <div class="row">

@@ -155,7 +155,7 @@
 @section('content')
 <div class="bg-dashboard"></div>
 <div class="container-fluid mt-negative w-100 mb-10">
-    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
+    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 mx-auto">
         <div class="card">
             <div class="card-header bg-white">
                 <div class="row">
@@ -386,7 +386,7 @@
             success: function(response){
                 stats_html = ""
                 stats_html += "<span>Total Pengirim: </span><span class='fw-bold text-dark'>"+response.data.total_sender + " Orang.&nbsp;&nbsp;</span>"
-                stats_html += "<span>Total Arwah: </span><span class='fw-bold text-dark'>"+response.data.total_arwah + " Orang.</span>"
+                stats_html += "<span>Total Arwah: </span><span class='fw-bold text-dark'>"+response.data.total_arwah + " Arwah.</span>"
                 stats_html += "<span>&nbsp; Jika ada salah dalam penulisan nama, alamat, dsb. silahkan lapor ke panitia.</span>"
                 $("#total-stats").html(stats_html)
             }

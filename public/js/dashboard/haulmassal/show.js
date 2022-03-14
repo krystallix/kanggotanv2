@@ -496,7 +496,7 @@ $.ajax({
         success: function(response){
             stats_html = ""
             stats_html += "<span>Total Pengirim: </span><span class='fw-bold text-dark'>"+response.data.total_sender + " Orang.&nbsp;&nbsp;</span>"
-            stats_html += "<span>Total Arwah: </span><span class='fw-bold text-dark'>"+response.data.total_arwah + " Orang.</span>"
+            stats_html += "<span>Total Arwah: </span><span class='fw-bold text-dark'>"+response.data.total_arwah + " Arwah.</span>"
             stats_html += "<span>&nbsp; Jika ada salah dalam penulisan nama, alamat, dsb. silahkan lapor ke panitia.</span>"
             $("#total-stats").html(stats_html)
         }

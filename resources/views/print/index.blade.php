@@ -36,7 +36,7 @@
 <script>
     
     $.ajax({
-        url: api_server + "/api/nyadran/all?per_page=20&page=1",
+        url: api_server + "/api/nyadran/all?year=2023&per_page=20&page=1",
         cache: false,
         beforeSend: function() {
             $('#loading').removeClass('hidden')
@@ -110,7 +110,7 @@
     
     function GetData(page, limit){
         $.ajax({
-            url: api_server + "/api/nyadran/all?per_page=20&page="+page,
+            url: api_server + "/api/nyadran/all?year=2023&per_page=20&page="+page,
             method: "GET",
             cache: false,
             beforeSend: function() {

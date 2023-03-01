@@ -26,7 +26,7 @@
                             <a class="dropdown-item " href="{{route('haul-massal.2022')}}">
                                 Haul Massal 2022
                             </a>
-                            <a class="dropdown-item " href="#">
+                            <a class="dropdown-item " href="{{route('haul-massal.2023')}}">
                                 Haul Massal 2023
                             </a>
                             <a class="dropdown-item " href="#">

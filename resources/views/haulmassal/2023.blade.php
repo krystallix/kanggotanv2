@@ -214,7 +214,7 @@
 <script src="{{asset('js/login.js')}}"></script>
 <script>
     $.ajax({
-        url: api_server + "/api/nyadran/all?year=2022&per_page=100&page=1",
+        url: api_server + "/api/nyadran/all?year=2023&per_page=100&page=1",
         cache: false,
         beforeSend: function() {
             $('#loading').removeClass('hidden')
@@ -288,7 +288,7 @@
     
     function GetData(page, limit){
         $.ajax({
-            url: api_server + "/api/nyadran/all?year=2022&per_page=100&page="+page,
+            url: api_server + "/api/nyadran/all?year=2023&per_page=100&page="+page,
             method: "GET",
             cache: false,
             beforeSend: function() {
@@ -346,7 +346,7 @@
                 form.append("name", value);
                 $.ajax({
                     method: 'POST',
-                    url: api_server + "/api/nyadran/search?year=2022",
+                    url: api_server + "/api/nyadran/search?year=2023",
                     timeout: 0,
                     headers: {
                         "Accept": "application/json"
@@ -380,7 +380,7 @@
             }
         });
         $.ajax({
-            url: api_server+"/api/nyadran/statistik?year=2022",
+            url: api_server+"/api/nyadran/statistik?year=2023",
             method: "get",
             timeout: 0,
             success: function(response){
@@ -394,7 +394,7 @@
         $(document).on("click", "#download-data-haul", function(e){
             e.preventDefault
             downloadUrl= api_server+"/api/nyadran/export"
-            file_name = "Haul-Massal-2022"
+            file_name = "Haul-Massal-2023"
             ExportFile(downloadUrl, file_name)
         })
     </script>

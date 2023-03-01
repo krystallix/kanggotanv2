@@ -1,79 +1,114 @@
-$.ajax({
-    url: api_server + "/api/nyadran/all?per_page=100&page=1",
-    cache: false,
-    beforeSend: function() {
-        $('#loading').removeClass('hidden')
-    },
-    success: function(response) {
-        $('#loading').addClass('hidden')
-        pageLength = response.data.last_page;
-        //page
-        // Number of items and limits the number of items per page
-        var limitPerPage = 100;
-        // Total pages rounded upwards
-        var totalPages = pageLength;
-        // Number of buttons at the top, not counting prev/next,
-        // but including the dotted buttons.
-        // Must be at least 5:
-        var paginationSize = 6;
-        var currentPage;
-        
-        function showPage(whichPage) {
-            if (whichPage < 1 || whichPage > totalPages) return false;
-            currentPage = whichPage;
-            // Replace the navigation items (not prev/next):
-            $(".pagination li").slice(1, -1).remove();
-            getPageList(totalPages, currentPage, paginationSize).forEach(
-                (item) => {
-                    $("<li>").addClass("page-item").addClass(item ? "current-page" : "disabled").toggleClass("active", item === currentPage).append($("<a>").addClass("page-link").attr({
-                        href: "javascript:void(0)",
-                    }).text(item || "...")).insertBefore("#next-page");
-                });
-                // Disable prev/next when at first/last page:
-                $("#previous-page").toggleClass("disabled", currentPage === 1);
-                $("#next-page").toggleClass("disabled", currentPage === totalPages);
-                return true;
-            }
-            // Include the prev/next buttons:
-            $(".pagination").append($("<li>").addClass("page-item").attr({
-                id: "previous-page"
-            }).append($("<a>").addClass("page-link").attr({
-                href: "javascript:void(0)",
-            }).append("<i class='fa-solid fa-chevron-left'></i>")), $("<li>").addClass("page-item").attr({
-                id: "next-page"
-            }).append($("<a>").addClass("page-link").attr({
-                href: "javascript:void(0)",
-            }).append("<i class='fa-solid fa-chevron-right'></i>")));
-            // Show the page links
-            showPage(1);
-            GetData(1);
-            // Use event delegation, as these items are recreated later
-            $(document).on("click", ".pagination li.current-page:not(.active)", function() {
-                GetData(+$(this).text(), limitPerPage);
-                return showPage(+$(this).text());
-            });
-            $("#next-page").on("click", function() {
-                if (currentPage == totalPages) {
-                    //nothing
-                } else {
-                    GetData(currentPage + 1, limitPerPage);
-                }
-                return showPage(currentPage + 1);
-            });
-            $("#previous-page").on("click", function() {
-                if (currentPage == 1) {
-                    //nothing
-                } else {
-                    GetData(currentPage - 1, limitPerPage);
-                }
-                return showPage(currentPage - 1);
-            });
+
+
+
+var year = 2023
+$('#list-year').on('change', function() {
+    year = this.value
+    showdata()
+    stats()
+
+});
+
+stats()
+showdata()
+
+
+function showdata(){
+    $.ajax({
+        url: api_server + "/api/nyadran/all?year="+year+"&per_page=100&page=1",
+        cache: false,
+        beforeSend: function() {
+            $('#loading').removeClass('hidden')
         },
-    });
+        success: function(response) {
+            $('#loading').addClass('hidden')
+            pageLength = response.data.last_page;
+            //page
+            // Number of items and limits the number of items per page
+            var limitPerPage = 100;
+            // Total pages rounded upwards
+            var totalPages = pageLength;
+            // Number of buttons at the top, not counting prev/next,
+            // but including the dotted buttons.
+            // Must be at least 5:
+            var paginationSize = 6;
+            var currentPage;
+            
+            function showPage(whichPage) {
+                if (whichPage < 1 || whichPage > totalPages) return false;
+                currentPage = whichPage;
+                // Replace the navigation items (not prev/next):
+                $(".pagination li").slice(1, -1).remove();
+                getPageList(totalPages, currentPage, paginationSize).forEach(
+                    (item) => {
+                        $("<li>").addClass("page-item").addClass(item ? "current-page" : "disabled").toggleClass("active", item === currentPage).append($("<a>").addClass("page-link").attr({
+                            href: "javascript:void(0)",
+                        }).text(item || "...")).insertBefore("#next-page");
+                    });
+                    // Disable prev/next when at first/last page:
+                    $("#previous-page").toggleClass("disabled", currentPage === 1);
+                    $("#next-page").toggleClass("disabled", currentPage === totalPages);
+                    return true;
+                }
+                // Include the prev/next buttons:
+                $(".pagination").append($("<li>").addClass("page-item").attr({
+                    id: "previous-page"
+                }).append($("<a>").addClass("page-link").attr({
+                    href: "javascript:void(0)",
+                }).append("<i class='fa-solid fa-chevron-left'></i>")), $("<li>").addClass("page-item").attr({
+                    id: "next-page"
+                }).append($("<a>").addClass("page-link").attr({
+                    href: "javascript:void(0)",
+                }).append("<i class='fa-solid fa-chevron-right'></i>")));
+                // Show the page links
+                showPage(1);
+                GetData(1);
+                // Use event delegation, as these items are recreated later
+                $(document).on("click", ".pagination li.current-page:not(.active)", function() {
+                    GetData(+$(this).text(), limitPerPage);
+                    return showPage(+$(this).text());
+                });
+                $("#next-page").on("click", function() {
+                    if (currentPage == totalPages) {
+                        //nothing
+                    } else {
+                        GetData(currentPage + 1, limitPerPage);
+                    }
+                    return showPage(currentPage + 1);
+                });
+                $("#previous-page").on("click", function() {
+                    if (currentPage == 1) {
+                        //nothing
+                    } else {
+                        GetData(currentPage - 1, limitPerPage);
+                    }
+                    return showPage(currentPage - 1);
+                });
+            },
+        });
+}
+
+
+function stats(){
+      
+    $.ajax({
+        url: api_server+"/api/nyadran/statistik?year="+year,
+        method: "get",
+        timeout: 0,
+        success: function(response){
+            stats_html = ""
+            stats_html += "<span>Total Pengirim: </span><span class='fw-bold text-dark'>"+response.data.total_sender + " Orang.&nbsp;&nbsp;</span>"
+            stats_html += "<span>Total Arwah: </span><span class='fw-bold text-dark'>"+response.data.total_arwah + " Arwah.</span>"
+            stats_html += "<span>&nbsp; Jika ada salah dalam penulisan nama, alamat, dsb. silahkan lapor ke panitia.</span>"
+            $("#total-stats").html(stats_html)
+        }
+    })
+    
+}
     
     function GetData(page, limit){
         $.ajax({
-            url: api_server + "/api/nyadran/all?per_page=100&page="+page,
+            url: api_server + "/api/nyadran/all?year="+year+"&per_page=100&page="+page,
             method: "GET",
             cache: false,
             beforeSend: function() {
@@ -455,7 +490,7 @@ $.ajax({
             form.append("name", value);
             $.ajax({
                 method: 'POST',
-                url: api_server + "/api/nyadran/search",
+                url: api_server + "/api/nyadran/search?year="+year,
                 timeout: 0,
                 headers: {
                     "Accept": "application/json"
@@ -488,23 +523,10 @@ $.ajax({
             GetData(1)
         }
     });
-    
-    $.ajax({
-        url: api_server+"/api/nyadran/statistik",
-        method: "get",
-        timeout: 0,
-        success: function(response){
-            stats_html = ""
-            stats_html += "<span>Total Pengirim: </span><span class='fw-bold text-dark'>"+response.data.total_sender + " Orang.&nbsp;&nbsp;</span>"
-            stats_html += "<span>Total Arwah: </span><span class='fw-bold text-dark'>"+response.data.total_arwah + " Arwah.</span>"
-            stats_html += "<span>&nbsp; Jika ada salah dalam penulisan nama, alamat, dsb. silahkan lapor ke panitia.</span>"
-            $("#total-stats").html(stats_html)
-        }
-    })
-    
+  
     $(document).on("click", "#download-data-haul", function(e){
         e.preventDefault
-        downloadUrl= api_server+"/api/nyadran/export"
+        downloadUrl= api_server+"/api/nyadran/export?year="+year
         file_name = "Haul-Massal-2022"
         ExportFile(downloadUrl, file_name)
     })

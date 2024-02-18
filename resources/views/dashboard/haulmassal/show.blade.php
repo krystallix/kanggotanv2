@@ -13,7 +13,8 @@
                         <div class="col-2">
                             <select id="list-year" class="form-select" aria-label="">
                                 <option value="2022">2022</option>
-                                <option selected value="2023">2023</option>
+                                <option value="2023">2023</option>
+                                <option selected value="2024">2024</option>
                               </select>
                         </div>
                     </div>

@@ -16,4 +16,7 @@ class Controller extends BaseController
     public function haul2023(){
         return view('haulmassal.2023');
     }
+    public function haul2024(){
+        return view('haulmassal.2024');
+    }
 }

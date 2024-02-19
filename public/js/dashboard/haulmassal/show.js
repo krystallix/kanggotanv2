@@ -1,7 +1,7 @@
 
 
 
-var year = 2023
+var year = 2024
 $('#list-year').on('change', function() {
     year = this.value
     showdata()
